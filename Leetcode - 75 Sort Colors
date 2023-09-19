@@ -1,0 +1,20 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int counts[3] = {0};
+
+        // Count occurrences of 0, 1, and 2 in the array.
+        for (int n : nums) {
+            counts[n]++;
+        }
+
+        int counter = 0;
+        for (int key = 0; key < 3; key++) {
+            int val = counts[key];
+            for (int i = counter; i < counter + val; i++) {
+                nums[i] = key;
+            }
+            counter += val;
+        }
+    }
+};
